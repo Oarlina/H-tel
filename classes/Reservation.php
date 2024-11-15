@@ -2,41 +2,24 @@
 
 class Reservation 
 {
-    // objet Chambre
-    //objet client
     private DateTime $debutReservation;
     private DateTime $finReservation;
-    private Client $reserve; // pour premettre a la class client d'accéder au infos d'ici
+    private Chambre $chambre; // pour permettre a la class Chambre d'accéder au infos d'ici
+    private Client $client; // pour permettre a la class Client d'accéder aux infos ici
     
-    
-
-    public function __construct( int $numChambre,
-            string $debutReservation, string $finReservation, Client $reserve)
+    public function __construct(string $debutReservation, string $finReservation, Chambre $chambre, Client $client)
     {
-        $this-> numChambre = $numChambre;
         $this-> debutReservation =new DateTime($debutReservation); 
         $this-> finReservation = new DateTime($finReservation);
-        $this-> reserve = $reserve;
-        $reserve -> addReserve($this);
+        $this -> chambre= $chambre;
+        $this -> client= $client;
     }
     
-    // getter et setter du numero de la chambre
-    public function getNumChambre()
-    {
-        return $this->numChambre;
-    }
-    public function setNumChambre($numChambre)
-    {
-        $this->numChambre = $numChambre;
-
-        return $this;
-    }
     // getter et setter du debut de la reservation
     public function getDebutReservation()
     {
         return $this->debutReservation;
-    }
-    public function setDebutReservation($debutReservation)
+    } public function setDebutReservation($debutReservation)
     {
         $this->debutReservation = $debutReservation;
 
@@ -46,23 +29,30 @@ class Reservation
     public function getFinReservation()
     {
         return $this->finReservation;
-    }
-    public function setFinReservation($finReservation)
+    } public function setFinReservation($finReservation)
     {
         $this->finReservation = $finReservation;
-        
+        return $this;
+    } 
+    //getter et setter de chambre
+    public function getChambre()
+    {
+        return $this->chambre;
+    } public function setChambre($chambre)
+    {
+        $this->chambre = $chambre;
         return $this;
     }
-    // getter et setter des reserve
-    public function getReserve()
+    // getter et setter de client
+    public function getClient()
     {
-        return $this->reserve;
-    }
-    public function setReserve($reserve)
+        return $this->client;
+    } public function setClient($client)
     {
-        $this->reserve = $reserve;
+        $this->client = $client;
         return $this;
     }
+
     
     public function getInfos()
     {
@@ -70,7 +60,8 @@ class Reservation
     }
     public function __toString()
     {
-        return "Chambre ". $this->numChambre;
+        return "Chambre ";
     }
+
 
 }

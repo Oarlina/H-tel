@@ -4,15 +4,14 @@ class Client
 {
     private string $prenom;
     private string $nom;
-    private array $reserves;
+    private array $reservations;
 
     public function __construct (string $prenom, string $nom)
     {
         $this-> prenom = $prenom;
         $this-> nom = $nom;
-        $this-> reserves = [];
+        $this->reservations =[];
     }
-
     // getter et setter de prenom
     public function getPrenom()
     {
@@ -31,32 +30,32 @@ class Client
     }
     public function setNom($nom)
     {
-        $this->nom = $nom;
-        
+        $this->nom = $nom; 
         return $this;
     }
-    // getter et setter des reserves
-    public function getReserves()
+    // getter et setter des reservations
+    public function getReservations()
     {
-        return $this->reserves;
-    } public function setReserves($reserves)
+        return $this->reservations;
+    } public function setReservations($reservations)
     {
-        $this->reserves = $reserves;
+        $this->reservations = $reservations;
+        return $this;
+    }
     
-        return $this;
-    }
-    public function addReserve(Reservation $reserve) // fait le tableau des reserve 
+    public function addReservation(Reservation $reservation)
     {
-        $this -> reserves[] = $reserve;
+        $this->reservations[] = $reservation;
     }
 
-    public function getInfos() // montre toutes les réservations du client
+    public function getInfos()
     {
-        $result = "<h3>Réservation de $this</h3>";
-        foreach($this->reserves as $reserve)
+        $result = "<h3>Réservations de ".$this."</h3>";
+        foreach ($this->chambres as $chambre)
         {
-            $result .= $this . " || ". $reserve->getInfos(). "<br>";
+            $result .= $chambre->getInfos()."<br>";
         }
+        $result .= "<br>";
         return $result;
     }
 
