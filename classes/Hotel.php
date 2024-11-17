@@ -1,3 +1,6 @@
+<style>
+    p{border: 1px white solid; background-color:green; width:7em;text-align:center;}
+</style>
 <?php
 
 class Hotel 
@@ -8,8 +11,6 @@ class Hotel
     private string $ville;
     private array $chambres; 
     private array $reservationsH;
-
-    
     public function __construct(string $nom, string $adresse,
             string $codePostal, string $ville)
     {
@@ -20,7 +21,6 @@ class Hotel
         $this-> chambres = [];
         $this-> reservationsH = [];
     }
-
     // getter et setter de nom
     public function getNom(){
         return $this->nom;
@@ -83,6 +83,7 @@ class Hotel
             $result .= "Aucune réservation ! <br>";
         }else
         {
+            $result .= "<p>".count($this->reservationsH)." réservations<br></p>";
             foreach($this->chambres as $this->chambre)
             {
                 $result .=  $this->chambre->InfosChambreReserver();
@@ -93,8 +94,8 @@ class Hotel
     public function infoHotel()
     {
         $result = "<h3>".$this."</h3>";
-        $result .= $this->adresse. " ". $this->codePostal. " ". $this->ville. "<br>Nombre de chambre: <br>Nombre de chambres réservées: ";
-        $result .= "<br>Nombre de chambres dispo: ";
+        $result .= $this->adresse. ", ". $this->codePostal. ", ". $this->ville. "<br>Nombre de chambre: ".count($this->chambres)." <br>Nombre de chambres réservées: ".count($this->reservationsH)." ";
+        $result .= "<br>Nombre de chambres dispo: ".count($this->chambres)-count($this->reservationsH);
         return $result;
     }
 

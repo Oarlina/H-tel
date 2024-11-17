@@ -31,6 +31,6 @@ $Rchambre4 = new Reservation ( "01-04-2021","01-04-2021",$chambre4,$micka,$hilto
 
 echo $hilton->InfosHotel(); // affiche les reservations de l'hotel hilton
 echo $regent->InfosHotel(); // affiche les reservations de l'hotel regent
-echo $micka->getInfoClient();
+
 
 // echo "<br>" . $chambre16->getInfos();
