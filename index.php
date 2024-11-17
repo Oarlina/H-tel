@@ -19,16 +19,17 @@ $chambre2 = new Chambre ("2","120","2", "", "True",$hilton);
 $chambre3 = new Chambre ("3","120","2", "", "True",$hilton);
 $chambre4 = new Chambre ("4","120","2", "", "True",$hilton);
 
-$Rchambre1 = new Reservation ( "01-01-2021","02-02-2021",$chambre1,$micka);
-$Rchambre2 = new Reservation ( "01-03-2021","02-04-2021",$chambre2,$micka);
-$Rchambre3 = new Reservation ( "01-04-2021","02-07-2021",$chambre3,$micka);
+$Rchambre1 = new Reservation ( "01-01-2021","02-02-2021",$chambre1,$micka,$hilton);
+$Rchambre2 = new Reservation ( "01-03-2021","02-04-2021",$chambre2,$micka,$hilton);
+$Rchambre3 = new Reservation ( "01-04-2021","02-07-2021",$chambre3,$micka,$hilton);
 
 
 
 
  echo $hilton -> infoHotel().$regent -> infoHotel()."<br>"; // affiche les informations des deux hotels
-// echo $chambre3."<br>". $chambre1; // affiche les numéros de la chambre
+
 echo "<br>".$hilton->InfosHotel(); // affiche les reservations de l'hotel hilton
-echo "<br>".$chambre3->getInfoClient();
+echo "<br>".$regent->InfosHotel(); // affiche les reservations de l'hotel regent
+echo "<br>".$micka->getInfoClient();
 
 // echo "<br>" . $chambre16->getInfos();

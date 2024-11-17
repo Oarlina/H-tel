@@ -6,7 +6,8 @@ class Hotel
     private string $adresse;
     private string $codePostal;
     private string $ville;
-    private array $chambres;
+    private array $chambres; 
+    private array $reservationsH;
 
     
     public function __construct(string $nom, string $adresse,
@@ -17,59 +18,56 @@ class Hotel
         $this-> codePostal = $codePostal;
         $this-> ville = $ville;
         $this-> chambres = [];
+        $this-> reservationsH = [];
     }
 
     // getter et setter de nom
-    public function getNom()
-    {
+    public function getNom(){
         return $this->nom;
-    } public function setNom($nom)
-    {
+    } public function setNom($nom){
         $this->nom = $nom;
         return $this;
     }
     // getter et setter d'adresse
-    public function getAdresse()
-    {
+    public function getAdresse(){
         return $this->adresse;
-    } public function setAdresse($adresse)
-    {
+    } public function setAdresse($adresse){
         $this->adresse = $adresse;
-
         return $this;
     }
     // getter et setter du code postale
-    public function getCodePostal()
-    {
+    public function getCodePostal(){
         return $this->codePostal;
-    } public function setCodePostal($codePostal)
-    {
+    } public function setCodePostal($codePostal){
         $this->codePostal = $codePostal;
-
         return $this;
     }
     // getter et setter de la ville
-    public function getVille()
-    {
+    public function getVille(){
         return $this->ville;
-    } public function setVille($ville)
-    {
+    } public function setVille($ville){
         $this->ville = $ville;
         return $this;
     }
     // getter et setter du tableau des chambres
-    public function getChambres()
-    {
+    public function getChambres(){
         return $this->chambres;
-    } public function setChambres($chambres)
-    {
+    } public function setChambres($chambres){
         $this->chambres = $chambres;
         return $this;
     }
+    // getter et setter de reservations
+    public function getReservationsH(): array{
+        return $this->reservationsH;
+    }  public function setReservationsH(array $reservationsH): self{
+        $this->reservationsH = $reservationH;
+        return $this;
+    }
 
-    public function addReserve(Reservation $reserve) // fait le tableau des reserve 
+
+    public function addReservationH(Reservation $reservationH)
     {
-        $this -> reserves[] = $reserve;
+        $this->reservationsH[] = $reservationH;
     }
     public function addChambre(Chambre $chambre) // fait le tableau des chambres 
     {
@@ -79,12 +77,18 @@ class Hotel
 
     public function InfosHotel() // probleme il n'affiche que la derniere chambre reserver
     {
-        $result = "<h3>Réservations de l'hôtel $this: </h3>";
-        foreach($this->chambres as $this->chambre)
+        $result = "<h3>Réservations de l'hôtel ".$this.": </h3>";
+        if ($this->reservationsH==null)
         {
-            $result .=  $this ." ". $this->chambre->InfosChambreReserver()."<br>";
-        }
-        return $result;
+            $result .= "Aucune réservations <br>";
+        }else
+        {
+            $result = "<h3>Réservations de l'hôtel $this: </h3>";
+            foreach($this->chambres as $this->chambre)
+            {
+                $result .=  $this ." ". $this->chambre->InfosChambreReserver()."<br>";
+            }
+        }return $result;
     }
 
     public function infoHotel()

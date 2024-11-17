@@ -6,14 +6,17 @@ class Reservation
     private DateTime $finReservation;
     private Chambre $chambre; // pour permettre a la class Chambre d'accéder au infos d'ici
     private Client $client; // pour permettre a la class Client d'accéder aux infos ici
-    
-    public function __construct(string $debutReservation, string $finReservation, Chambre $chambre, Client $client)
+    private Hotel $hotel;
+
+    public function __construct(string $debutReservation, string $finReservation, Chambre $chambre, Client $client,Hotel $hotel)
     {
         $this-> debutReservation =new DateTime($debutReservation); 
         $this-> finReservation = new DateTime($finReservation);
         $this -> chambre= $chambre;
         $chambre ->addReservation($this);
         $this -> client= $client;
+        $this -> hotel= $hotel;
+        $hotel ->addReservationH($this);
     }
     
     // getter et setter du debut de la reservation
@@ -23,7 +26,6 @@ class Reservation
     } public function setDebutReservation($debutReservation)
     {
         $this->debutReservation = $debutReservation;
-
         return $this;
     }
     // getter et setter de la fin de la reservation
