@@ -34,25 +34,24 @@ class Client
         $this->reservations = $reservations;
         return $this;
     }
-    
     public function addReservation(Reservation $reservation){
         $this->reservations[] = $reservation;
     }
-    public function getInfoClient()
-    {
-        $result = "<h3>Réservations de ".$this." </h3>";
-        if ($this->reservations==null)
-        {
-            $result .= "Aucune réservations<br>";
-        }else
-        {
-            foreach ($this->reservations as $this->reservation)
-            {
-                $result .=  $this->reservations->hotel . " (". $this->nbLits . " lits - ".$this->prix. " € - Wifi: ".$this->wifi. ") || ". $this->reservation."<br>";
-            }
-        }
-        return $result;
-    }
+    // public function getInfoClient()
+    // {
+    //     $result = "<h3>Réservations de ".$this." </h3>";
+    //     if ($this->reservations==null)
+    //     {
+    //         $result .= "Aucune réservations<br>";
+    //     }else
+    //     {
+    //         foreach ($this->reservations as $this->reservation)
+    //         {
+    //             $result .=  $this->reservations->hotel . " (". $this->nbLits . " lits - ".$this->prix. " € - Wifi: ".$this->wifi. ") || ". $this->reservation."<br>";
+    //         }
+    //     }
+    //     return $result;
+    // }
 
 
     public function __toString()
@@ -60,4 +59,5 @@ class Client
         return $this->prenom. " ". $this->nom;
     }
 
+    
 }

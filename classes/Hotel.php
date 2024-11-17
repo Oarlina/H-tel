@@ -80,13 +80,12 @@ class Hotel
         $result = "<h3>Réservations de l'hôtel ".$this.": </h3>";
         if ($this->reservationsH==null)
         {
-            $result .= "Aucune réservations <br>";
+            $result .= "Aucune réservation ! <br>";
         }else
         {
-            $result = "<h3>Réservations de l'hôtel $this: </h3>";
             foreach($this->chambres as $this->chambre)
             {
-                $result .=  $this ." ". $this->chambre->InfosChambreReserver()."<br>";
+                $result .=  $this->chambre->InfosChambreReserver();
             }
         }return $result;
     }
@@ -95,7 +94,7 @@ class Hotel
     {
         $result = "<h3>".$this."</h3>";
         $result .= $this->adresse. " ". $this->codePostal. " ". $this->ville. "<br>Nombre de chambre: <br>Nombre de chambres réservées: ";
-        $result .= "<br>Nombre de chambres dispo: "."<br>";
+        $result .= "<br>Nombre de chambres dispo: ";
         return $result;
     }
 

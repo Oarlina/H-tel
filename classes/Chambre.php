@@ -7,10 +7,9 @@ class Chambre
     private int $nbLits;
     private bool $wifi;
     private bool $disponible;
-    private array $reservations; // il a accès a un tableau de reservations
     private Hotel $hotel; // pour que la class Hotel peut avoir les données
- 
-
+    private array $clients;
+    private array $reservations; // il a accès a un tableau de reservations
     public function __construct (string $numero, float $prix, int $nbLits, string $wifi, bool $disponible, Hotel $hotel)
     {
         $this-> numero = $numero;
@@ -21,6 +20,7 @@ class Chambre
         $this-> hotel = $hotel;
         $hotel-> addChambre($this);
         $this-> reservations = [];
+        $this-> clients = [];
     }
 
     // getter et setter du numéro
@@ -65,6 +65,13 @@ class Chambre
         $this->hotel = $hotel;
         return $this;
     }
+    // getter et setter de client
+    public function getClients(): array{
+        return $this->clients;
+    }public function setClients(array $clients): self{
+        $this->clients = $clients;
+        return $this;
+    }
     // getter et setter de reservations
     public function getReservations(): array{
         return $this->reservations;
@@ -72,14 +79,16 @@ class Chambre
         $this->reservations = $reservations;
         return $this;
     }
-
-
-
+    
+    
     public function addReservation(Reservation $reservation)
     {
         $this->reservations[] = $reservation;
     }
-    
+    public function addClient(Client $client)
+    {
+        $this->clients[] = $client;
+    }
     
 
     public function getInfos()
@@ -90,14 +99,14 @@ class Chambre
     
     public function InfosChambreReserver()
     {
-        $result = "";
+        $result = " ";
         foreach ($this->reservations as $this->reservation)
         {
-            $result .=  $this ." || ". $this->reservation."<br>";
+            $result .=  $this->reservation->getClient()." ".$this ." || ". $this->reservation."<br>";
         }
         return  $result ;
     }
-
+    
     public function __toString()
     {
         return "Chambre: ". $this->numero;

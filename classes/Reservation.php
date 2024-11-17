@@ -18,7 +18,6 @@ class Reservation
         $this -> hotel= $hotel;
         $hotel ->addReservationH($this);
     }
-    
     // getter et setter du debut de la reservation
     public function getDebutReservation()
     {

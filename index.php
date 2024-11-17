@@ -18,18 +18,19 @@ $chambre1 = new Chambre ("1","120","2", "", "True",$hilton);
 $chambre2 = new Chambre ("2","120","2", "", "True",$hilton);
 $chambre3 = new Chambre ("3","120","2", "", "True",$hilton);
 $chambre4 = new Chambre ("4","120","2", "", "True",$hilton);
+$chambre17 = new Chambre ("17","120","2", "", "True",$hilton);
 
-$Rchambre1 = new Reservation ( "01-01-2021","02-02-2021",$chambre1,$micka,$hilton);
-$Rchambre2 = new Reservation ( "01-03-2021","02-04-2021",$chambre2,$micka,$hilton);
-$Rchambre3 = new Reservation ( "01-04-2021","02-07-2021",$chambre3,$micka,$hilton);
+$Rchambre17 = new Reservation ( "01-01-2021","01-01-2021",$chambre17,$virgile,$hilton);
+$Rchambre3 = new Reservation ( "11-03-2021","11-03-2021",$chambre3,$micka,$hilton);
+$Rchambre4 = new Reservation ( "01-04-2021","01-04-2021",$chambre4,$micka,$hilton);
 
 
 
 
- echo $hilton -> infoHotel().$regent -> infoHotel()."<br>"; // affiche les informations des deux hotels
+ echo $hilton -> infoHotel().$regent -> infoHotel(); // affiche les informations des deux hotels
 
-echo "<br>".$hilton->InfosHotel(); // affiche les reservations de l'hotel hilton
-echo "<br>".$regent->InfosHotel(); // affiche les reservations de l'hotel regent
-echo "<br>".$micka->getInfoClient();
+echo $hilton->InfosHotel(); // affiche les reservations de l'hotel hilton
+echo $regent->InfosHotel(); // affiche les reservations de l'hotel regent
+echo $micka->getInfoClient();
 
 // echo "<br>" . $chambre16->getInfos();
