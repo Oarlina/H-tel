@@ -26,7 +26,6 @@ class Hotel
     } public function setNom($nom)
     {
         $this->nom = $nom;
-
         return $this;
     }
     // getter et setter d'adresse
@@ -72,18 +71,21 @@ class Hotel
     {
         $this -> reserves[] = $reserve;
     }
-
-    // public function getInfos() // montre toutes les réservations du client
-    // {
-    //     $result = "<h3>Réservation de $this</h3>";
-    //     foreach($this->reserves as $reserve)
-    //     {
-    //         $result .= $reserve->getClient();
-    //     }
-    //     return $result;
-    // }
+    public function addChambre(Chambre $chambre) // fait le tableau des chambres 
+    {
+        $this -> chambres[] = $chambre;
+    }
 
 
+    public function InfosHotel() // probleme il n'affiche que la derniere chambre reserver
+    {
+        $result = "<h3>Réservations de l'hôtel $this: </h3>";
+        foreach($this->chambres as $this->chambre)
+        {
+            $result .=  $this ." ". $this->chambre->InfosChambreReserver()."<br>";
+        }
+        return $result;
+    }
 
     public function infoHotel()
     {

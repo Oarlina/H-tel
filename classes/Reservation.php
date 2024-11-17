@@ -12,6 +12,7 @@ class Reservation
         $this-> debutReservation =new DateTime($debutReservation); 
         $this-> finReservation = new DateTime($finReservation);
         $this -> chambre= $chambre;
+        $chambre ->addReservation($this);
         $this -> client= $client;
     }
     
@@ -54,13 +55,10 @@ class Reservation
     }
 
     
-    public function getInfos()
-    {
-        return $this." || du ". $this->debutReservation->format("d/m/Y"). " au ". $this->finReservation->format("d/m/Y");
-    }
+    
     public function __toString()
     {
-        return "Chambre ";
+        return "du ". $this->debutReservation->format("d/m/Y"). " au ". $this->finReservation->format("d/m/Y");
     }
 
 

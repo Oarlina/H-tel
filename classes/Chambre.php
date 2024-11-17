@@ -18,7 +18,9 @@ class Chambre
         $this-> nbLits = $nbLits;
         $this-> wifi = $wifi;
         $this-> disponible = $disponible;
-
+        $this-> hotel = $hotel;
+        $hotel-> addChambre($this);
+        $this-> reservations = [];
     }
 
     // getter et setter du numéro
@@ -73,27 +75,53 @@ class Chambre
     } public function setHotel($hotel)
     {
         $this->hotel = $hotel;
-
         return $this;
     }
+    // getter et setter de reservations
+    public function getReservations(): array
+    {
+        return $this->reservations;
+    }  public function setReservations(array $reservations): self
+    {
+        $this->reservations = $reservations;
+        return $this;
+    }
+
+
 
     public function addReservation(Reservation $reservation)
     {
         $this->reservations[] = $reservation;
     }
-
-
+    
+    
 
     public function getInfos()
     {
         return $this . " (". $this->nbLits . " lits - ".$this->prix. " € - Wifi: ".$this->wifi. ") ";
     }
-
+    
+    public function getInfoClient()
+    {
+        $result = "<h3>Réservations de ".$reservation." </h3>";
+        foreach ($this->reservations as $this->reservation)
+        {
+            $result .=  $this . " (". $this->nbLits . " lits - ".$this->prix. " € - Wifi: ".$this->wifi. ") || ". $this->reservation."<br>";
+        }
+        return $result;
+    }
+    public function InfosChambreReserver()
+    {
+        $result = "";
+        foreach ($this->reservations as $this->reservation)
+        {
+            $result .=  $this ." || ". $this->reservation."<br>";
+        }
+        return  $result ;
+    }
 
     public function __toString()
     {
         return "Chambre: ". $this->numero;
     }
-
-
 }

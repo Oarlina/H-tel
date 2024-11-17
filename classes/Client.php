@@ -48,16 +48,7 @@ class Client
         $this->reservations[] = $reservation;
     }
 
-    public function getInfos()
-    {
-        $result = "<h3>Réservations de ".$this."</h3>";
-        foreach ($this->chambres as $chambre)
-        {
-            $result .= $chambre->getInfos()."<br>";
-        }
-        $result .= "<br>";
-        return $result;
-    }
+
 
     public function __toString()
     {
