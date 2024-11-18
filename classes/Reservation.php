@@ -54,7 +54,11 @@ class Reservation
         $this->client = $client;
         return $this;
     }
-
+    public function infosClient() 
+    {
+        $result = $this->chambre->infoClient();
+        return $result;
+    }
     
     
     public function __toString()

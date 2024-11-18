@@ -90,6 +90,7 @@ class Hotel
             }
         }return $result;
     }
+    
 
     public function infoHotel()
     {

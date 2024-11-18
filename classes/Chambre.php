@@ -99,13 +99,27 @@ class Chambre
     
     public function InfosChambreReserver()
     {
-        $result = " ";
+        $result =  " ";
         foreach ($this->reservations as $this->reservation)
         {
             $result .=  $this->reservation->getClient()." ".$this ." || ". $this->reservation."<br>";
         }
         return  $result ;
     }
+
+    public function infoClient ()
+    {
+        $result = "";
+        if ($this->reservations==null)
+        {
+            $result .= "Aucune réservation ! <br>";
+        }else
+        {
+            $result .= "Hotel: ". $this->hotel. " || ".$this->getInfos() ." || ". $this->reservation."<br>";
+        }
+        return $result;
+    }
+
     
     public function __toString()
     {
