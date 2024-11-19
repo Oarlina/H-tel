@@ -6,7 +6,7 @@ class Reservation
     private DateTime $finReservation;
     private Chambre $chambre; // pour permettre a la class Chambre d'accéder au infos d'ici
     private Client $client; // pour permettre a la class Client d'accéder aux infos ici
-    private Hotel $hotel;
+  
 
     public function __construct(string $debutReservation, string $finReservation, Chambre $chambre, Client $client,Hotel $hotel)
     {
@@ -15,8 +15,7 @@ class Reservation
         $this -> chambre= $chambre;
         $chambre ->addReservation($this);
         $this -> client= $client;
-        $this -> hotel= $hotel;
-        $hotel ->addReservationH($this);
+        $client ->addReservation($this);
     }
     // getter et setter du debut de la reservation
     public function getDebutReservation()
@@ -56,7 +55,8 @@ class Reservation
     }
     public function infosClient() 
     {
-        $result = $this->chambre->infoClient();
+        $result ="";
+        $result = $this->chambre->infoClient().$this."<br>";
         return $result;
     }
     
@@ -65,6 +65,4 @@ class Reservation
     {
         return "du ". $this->debutReservation->format("d/m/Y"). " au ". $this->finReservation->format("d/m/Y");
     }
-
-
 }

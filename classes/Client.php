@@ -5,12 +5,14 @@ class Client
     private string $prenom;
     private string $nom;
     private array $reservations;
+    // private float $prix;
 
 
     public function __construct (string $prenom, string $nom){
         $this-> prenom = $prenom;
         $this-> nom = $nom;
         $this->reservations =[];
+        // $this ->prix = 0;
     }
     // getter et setter de prenom
     public function getPrenom(){
@@ -42,12 +44,38 @@ class Client
 
     public function reservationsClient ()
     {
-        $result ="<h3> Réservations de $this: </h3>";
-        $result .= $this->reservations->infosClient;
+        $result ="<h2> Réservations de $this: </h2>";
+        foreach ($this->reservations as $reservation)
+        {
+            
+            $result .= $reservation->infosClient()."<br>";
+            // $prix += $reservation->chambre->getPrix();
+        }
+        // $result .= ">Total: ".$prix." €";
         return $result;
     }
     public function __toString()
     {
         return $this->prenom. " ". $this->nom;
+    }
+
+    /**
+     * Get the value of prix
+     */ 
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set the value of prix
+     *
+     * @return  self
+     */ 
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
     }
 }

@@ -10,7 +10,6 @@ class Hotel
     private string $codePostal;
     private string $ville;
     private array $chambres; 
-    private array $reservationsH;
     public function __construct(string $nom, string $adresse,
             string $codePostal, string $ville)
     {
@@ -19,7 +18,6 @@ class Hotel
         $this-> codePostal = $codePostal;
         $this-> ville = $ville;
         $this-> chambres = [];
-        $this-> reservationsH = [];
     }
     // getter et setter de nom
     public function getNom(){
@@ -57,33 +55,29 @@ class Hotel
         return $this;
     }
     // getter et setter de reservations
-    public function getReservationsH(): array{
-        return $this->reservationsH;
-    }  public function setReservationsH(array $reservationsH): self{
-        $this->reservationsH = $reservationH;
+    public function getReservations(): array{
+        return $this->reservations;
+    }  public function setReservations(array $reservations): self{
+        $this->reservations = $reservation;
         return $this;
     }
 
 
-    public function addReservationH(Reservation $reservationH)
-    {
-        $this->reservationsH[] = $reservationH;
-    }
     public function addChambre(Chambre $chambre) // fait le tableau des chambres 
     {
         $this -> chambres[] = $chambre;
     }
 
 
-    public function InfosHotel() // probleme il n'affiche que la derniere chambre reserver
+    public function reservationsHotel() 
     {
-        $result = "<h3>Réservations de l'hôtel ".$this.": </h3>";
-        if ($this->reservationsH==null)
+        $result = "<h2>Réservations de l'hôtel ".$this.": </h2>";
+        if ($chambre->reservations==null)
         {
             $result .= "Aucune réservation ! <br>";
         }else
         {
-            $result .= "<p>".count($this->reservationsH)." réservations<br></p>";
+            $result .= "<p>".count($chambre->reservations)." réservations<br></p>";
             foreach($this->chambres as $this->chambre)
             {
                 $result .=  $this->chambre->InfosChambreReserver();
@@ -91,12 +85,26 @@ class Hotel
         }return $result;
     }
     
+    public function nbChambre() // pour afficher le nombre de chambre dont les reserver et disponible
+    {
+        $nb= 0;
+        $nbChambreVide =0;
+        foreach($this->chambres as $chambre)
+        {
+           foreach($chambre->getReservations() as $reservation) // calcule le nombre de reservations dans les chambres
+           {
+                $nb++;
+           }
+          $nbChambreVide = (count($this->chambres) - $nb);
+        }
+        return "Nombre de chambre: ".count($this->chambres)."<br> Nombre de chambres reservées: ".$nb."<br> Nombre de chambres disponible ".$nbChambreVide;
+        
+    }
 
     public function infoHotel()
     {
         $result = "<h3>".$this."</h3>";
-        $result .= $this->adresse. ", ". $this->codePostal. ", ". $this->ville. "<br>Nombre de chambre: ".count($this->chambres)." <br>Nombre de chambres réservées: ".count($this->reservationsH)." ";
-        $result .= "<br>Nombre de chambres dispo: ".count($this->chambres)-count($this->reservationsH);
+        $result .= $this->adresse. ", ". $this->codePostal. ", ". $this->ville. "<br>".$this->nbChambre();
         return $result;
     }
 

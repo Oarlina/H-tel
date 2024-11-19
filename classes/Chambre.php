@@ -10,7 +10,7 @@ class Chambre
     private Hotel $hotel; // pour que la class Hotel peut avoir les données
     private array $clients;
     private array $reservations; // il a accès a un tableau de reservations
-    public function __construct (string $numero, float $prix, int $nbLits, string $wifi, bool $disponible, Hotel $hotel)
+    public function __construct (string $numero, float $prix, int $nbLits, bool $wifi, bool $disponible, Hotel $hotel)
     {
         $this-> numero = $numero;
         $this-> prix = $prix;
@@ -81,20 +81,14 @@ class Chambre
     }
     
     
-    public function addReservation(Reservation $reservation)
-    {
+    public function addReservation(Reservation $reservation){
         $this->reservations[] = $reservation;
     }
-    public function addClient(Client $client)
-    {
+    public function addClient(Client $client){
         $this->clients[] = $client;
     }
     
 
-    public function getInfos()
-    {
-        return $this . " (". $this->nbLits . " lits - ".$this->prix. " € - Wifi: ".$this->wifi. ") ";
-    }
     
     
     public function InfosChambreReserver()
@@ -106,20 +100,36 @@ class Chambre
         }
         return  $result ;
     }
-
+    
     public function infoClient ()
     {
         $result = "";
-        if ($this->reservations==null)
+        if ($this->reservations == null)
         {
             $result .= "Aucune réservation ! <br>";
         }else
         {
-            $result .= "Hotel: ". $this->hotel. " || ".$this->getInfos() ." || ". $this->reservation."<br>";
+            $result .= "<b>Hotel: ". $this->hotel. "</b> || ".$this->getInfos() ." || ";
         }
         return $result;
     }
-
+    public function etatWifi ()
+    {
+        if ($this->wifi == True)
+        {
+            $valeur = "Oui";
+        }else 
+        {
+            $valeur = "Non";
+        }
+        return $valeur;
+    }
+    
+    
+    public function getInfos()
+    {
+        return $this . " (". $this->nbLits . " lits - ".$this->prix. " € - Wifi: ".$this->etatWifi(). ") ";
+    }
     
     public function __toString()
     {
