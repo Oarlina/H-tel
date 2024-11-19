@@ -108,7 +108,7 @@ class Hotel
 
     public function infoHotel()
     {
-        $result = "<h3>".$this."</h3>";
+        $result = "<h2>".$this."</h2>";
         $result .= $this->adresse. ", ". $this->codePostal. ", ". $this->ville. "<br>".$this->nbChambre();
         return $result;
     }
@@ -116,23 +116,25 @@ class Hotel
     public function afficherChambres()
     {
         ksort($this->chambres);
-        $result = "<h2>Statues des chambres de $this:</h2><br><table> 
+        $result = "<h2>Statues des chambres de <b>$this:</b></h2><br><table> 
                         <thead> 
                             <tr>
-                                <th>CHAMBRES</th>
-                                <th>PRIX </th>
-                                <th>WIFI </th>
-                                <th>ETAT </th>
+                           
+                                <th> CHAMBRES </th>
+                                <th> PRIX </th>
+                                <th> WIFI </th>
+                                <th> ETAT </th>
+                            
                             </tr>
                         </thead>
                         <tbody>";
         foreach ($this->chambres as $chambre)
         {
             $result .="<tr>
-                        <th>$chambre</th>
-                        <th>".$chambre->getPrix() ." €</th>
-                        <th>".$chambre->iconWifi() ."</th>
-                        <th>".$chambre->etatChambre() ."</th>
+                        <td>Chambre n° ". $chambre->getNumero()."</th>
+                        <td> ".$chambre->getPrix() ." €</td>
+                        <td> ".$chambre->iconWifi() ." </td>
+                        <td> ".$chambre->etatChambre() ." </td>
                     </tr>";
         }
 

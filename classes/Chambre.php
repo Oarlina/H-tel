@@ -129,7 +129,7 @@ class Chambre
     {
         if ($this->wifi == True)
         {
-            return "<i class='fa-solid fa-wifi'></i>";
+            return "<i class='fa-duotone fa-solid fa-wifi fa-rotate-by' style='--fa-rotate-angle: 45deg;'></i>";
         }
     }
 

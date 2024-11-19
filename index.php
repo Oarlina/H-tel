@@ -25,7 +25,7 @@
 
         $chambre1 = new Chambre ("1","120","2", True, "", $hilton);
         $chambre2 = new Chambre ("2","120","2", True, "", $hilton);
-        $chambre3 = new Chambre ("3","120","2", False, "", $hilton);
+        $chambre3 = new Chambre ("3","80","2", False, "", $hilton);
         $chambre4 = new Chambre ("4","120","2", True, "", $hilton);
         $chambre5 = new Chambre ("5","120","2", True, "", $hilton);
         $chambre6 = new Chambre ("6","120","2", False, "", $hilton);
@@ -51,16 +51,16 @@
 
 
         // afficher les réservations des hotels
-         echo $hilton->reservationsHotel()."<br>"; 
+         echo "<br><br>".$hilton->reservationsHotel()."<br>"; 
          echo $regent->reservationsHotel()."<br>"; 
 
         // // affiche les réservations des clients
-        echo $virgile->reservationsClient();
+        echo "<br><br>".$virgile->reservationsClient();
         echo $micka->reservationsClient();
 
 
         //affiche les chambres de l'hôtel
-        echo $hilton->afficherChambres();
+        echo "<br><br>".$hilton->afficherChambres();
     ?>
 </body>
 </html>

@@ -50,7 +50,7 @@ class Client
         $nb=0;
         foreach($this->reservations as $reservation) // pour regarder toutes les chambres de chambres
         {
-            $result2 .= $reservation->infosClient()."<br>";
+            $result2 .= $reservation->infosClient();
             $prix += $reservation->prixTotal();
             $nb++;
         }
@@ -64,7 +64,7 @@ class Client
         }
         
         $result2 .= "Total: ".$prix." €";
-        return $result.$result2;
+        return $result.$result2."<br><br> ";
     }
     public function __toString()
     {

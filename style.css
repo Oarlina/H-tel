@@ -5,8 +5,8 @@
     } 
 
 body{
-    background-color: white;
-    color:rgb(0, 0, 0);
+    background-color: black;
+    color:white;
 }
 
 p{
@@ -25,11 +25,19 @@ p{
     border: none;
     border-radius: 10%;
 }
-
-tr{
-    border-bottom: black 1px solid;
+h2{
+    font-weight: normal;
 }
-th{
+th,td{
+    
+    padding-top: 0.2em;
+    padding-bottom:0.2em;
     padding-left:1em;
     padding-right: 1em;
 }
+td{
+    border-collapse: initial;
+    border-bottom: 2px solid white;
+    margin:none;
+}
+
