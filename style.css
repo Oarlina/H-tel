@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    } 
+
+body{
+    background-color: white;
+    color:rgb(0, 0, 0);
+}
+
+p{
+    border: 1px white solid;
+    background-color:green;
+    width:7em;
+    text-align:center;
+}
+
+.disponible{
+    background-color: green;
+    border-radius: 10%; 
+}
+.reserve{
+    background-color: red;
+    border: none;
+    border-radius: 10%;
+}
+
+tr{
+    border-bottom: black 1px solid;
+}
+th{
+    padding-left:1em;
+    padding-right: 1em;
+}

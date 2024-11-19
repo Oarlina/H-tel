@@ -1,3 +1,4 @@
+
 <?php
 
 class Chambre
@@ -124,7 +125,24 @@ class Chambre
         }
         return $valeur;
     }
-    
+    public function iconWifi()
+    {
+        if ($this->wifi == True)
+        {
+            return "<i class='fa-solid fa-wifi'></i>";
+        }
+    }
+
+    public function etatChambre ()
+    {
+        if ($this->reservations == True) // si une chambre est réserver alors elle renvoie Réservé sinon Disponilbe
+        {
+            return "<p class='reserve'>Réservé</p>";
+        }else
+        {
+            return "<p class='disponible'>Disponible</p>";
+        }
+    }
     
     public function getInfos()
     {

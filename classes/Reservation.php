@@ -53,13 +53,24 @@ class Reservation
         $this->client = $client;
         return $this;
     }
+
+    public function prixTotal ()
+    {
+        $total=0;
+        $debut= $this->debutReservation;
+        $fin = $this->finReservation;
+        $nbJour= $debut->diff($fin);
+        $nbJour = $nbJour->format ('%R%a');
+        $total += $nbJour * ($this->chambre->getPrix());
+        return $total;
+    }
+
     public function infosClient() 
     {
         $result ="";
         $result = $this->chambre->infoClient().$this."<br>";
         return $result;
     }
-    
     
     public function __toString()
     {

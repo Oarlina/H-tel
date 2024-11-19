@@ -1,6 +1,4 @@
-<style>
-    p{border: 1px white solid; background-color:green; width:7em;text-align:center;}
-</style>
+
 <?php
 
 class Hotel 
@@ -70,34 +68,41 @@ class Hotel
 
 
     public function reservationsHotel() 
-    {
+    {    
         $result = "<h2>Réservations de l'hôtel ".$this.": </h2>";
-        if ($chambre->reservations==null)
+        $result2= "";
+        $nb=0;
+        foreach($this->chambres as $this->chambre) // pour regarder toutes les chambres de chambres
         {
-            $result .= "Aucune réservation ! <br>";
-        }else
-        {
-            $result .= "<p>".count($chambre->reservations)." réservations<br></p>";
-            foreach($this->chambres as $this->chambre)
+            foreach ($this->chambre->getReservations() as $reservation) // pour trouver le nombre de chambre qui ont une réservation et récupérer ces informations
             {
-                $result .=  $this->chambre->InfosChambreReserver();
+                $result2 .=  $this->chambre->InfosChambreReserver();
+                $nb++;
             }
-        }return $result;
+        }
+        // si je n'ai aucune reservation alors j'ajoute a result2 sinon j'ajoute a result
+        if ($nb == 0) 
+            {
+                $result2 = "Aucune réservations ! <br>";
+            }
+        else 
+        {
+            $result .= "<p>".$nb." réservations<br></p>";
+        }
+        return $result.$result2;
     }
     
     public function nbChambre() // pour afficher le nombre de chambre dont les reserver et disponible
     {
         $nb= 0;
-        $nbChambreVide =0;
         foreach($this->chambres as $chambre)
         {
            foreach($chambre->getReservations() as $reservation) // calcule le nombre de reservations dans les chambres
            {
                 $nb++;
            }
-          $nbChambreVide = (count($this->chambres) - $nb);
         }
-        return "Nombre de chambre: ".count($this->chambres)."<br> Nombre de chambres reservées: ".$nb."<br> Nombre de chambres disponible ".$nbChambreVide;
+        return "Nombre de chambre: ".count($this->chambres)."<br> Nombre de chambres reservées: ".$nb."<br> Nombre de chambres disponible ".(count($this->chambres) - $nb)."<br>";
         
     }
 
@@ -105,6 +110,34 @@ class Hotel
     {
         $result = "<h3>".$this."</h3>";
         $result .= $this->adresse. ", ". $this->codePostal. ", ". $this->ville. "<br>".$this->nbChambre();
+        return $result;
+    }
+
+    public function afficherChambres()
+    {
+        ksort($this->chambres);
+        $result = "<h2>Statues des chambres de $this:</h2><br><table> 
+                        <thead> 
+                            <tr>
+                                <th>CHAMBRES</th>
+                                <th>PRIX </th>
+                                <th>WIFI </th>
+                                <th>ETAT </th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+        foreach ($this->chambres as $chambre)
+        {
+            $result .="<tr>
+                        <th>$chambre</th>
+                        <th>".$chambre->getPrix() ." €</th>
+                        <th>".$chambre->iconWifi() ."</th>
+                        <th>".$chambre->etatChambre() ."</th>
+                    </tr>";
+        }
+
+
+        $result .= "</tbody> </thead>";
         return $result;
     }
 
