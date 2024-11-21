@@ -131,7 +131,7 @@ class Hotel
         foreach ($this->chambres as $chambre)
         {
             $result .="<tr>
-                        <td>Chambre n° ". $chambre->getNumero()."</th>
+                        <td>Chambre n° ". $chambre->getNumero()."</td>
                         <td> ".$chambre->getPrix() ." €</td>
                         <td> ".$chambre->iconWifi() ." </td>
                         <td> ".$chambre->etatChambre() ." </td>
@@ -139,7 +139,7 @@ class Hotel
         }
 
 
-        $result .= "</tbody> </thead>";
+        $result .= "</tbody> </table>";
         return $result;
     }
 
