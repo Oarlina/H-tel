@@ -1,6 +1,6 @@
 ### Exercice de Formation : Reproduction d'une gestion d'un Hôtel
 
-**Description du Projet**
+**Description du Projet**  
 Cet exercice a été réalisé dans le cadre d'une formation en développement web. L'objectif était de faire la gestion d'un hôtel, avec un système d'affichage des informations, des réservations, et des statistiques des chambres.
 
 **Fonctionnalités**
