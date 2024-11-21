@@ -1,4 +1,4 @@
-Exercice PHP POO hotel:
+PHP POO hotel:
 
 J'ai utilisé 4 classes : hotel, chambre, reservation, client.
 Cela ma permis d'apprendre a codé avec plus de classe.
