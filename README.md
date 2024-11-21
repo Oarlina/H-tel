@@ -1,13 +1,26 @@
-PHP POO hotel:
+### Exercice de Formation : Reproduction d'une gestion d'un Hôtel
 
-J'ai utilisé 4 classes : hotel, chambre, reservation, client.
-Cela ma permis d'apprendre a codé avec plus de classe.
-Le code doit afficher les informations d'un hotel, les réservations d'un hotel avec le nombre, les réservations d'un client et combien il en a et l'affichage des statuts des chambres d'un hôtel.
+**Description du Projet**
+Cet exercice a été réalisé dans le cadre d'une formation en développement web. L'objectif était de faire la gestion d'un hôtel, avec un système d'affichage des informations, des réservations, et des statistiques des chambres.
 
-Une réservation a un début de réservation, une fin de réservation, la chambre, le client et l'hôtel.
-Une chambre comporte d'un numéro, d'un prix, d'un nombre de lits, d'une possibilité de wifi et de disponibilité et d'un hôtel.
+**Fonctionnalités**
+* Affichage des informations de l'hôtel : nom, localisation, nombre de chambre etc
+* Gestion des réservations :
+  * Liste des réservations associées à un hôtel.
+  * Liste des réservations associées à un client.
+* Statistiques des chambres associé à un hôtel: nombre de chambres disponible ou réservé, prix, disponibilité du wifi.
 
-Un hotel contient un nom, une adresse, un code postale, une ville, un nombre de chambres total, et le nombre de chambre réservé et disponible.
-Les réservations d'un hôtel se caractérise par le nombre de réservation, le client qui a réservé la chambre, la chambre réservé et la date de réservations.
-Les réservations d'un client comporte le nombre de réservation, le nom et la ville de l'hotel, la chambre réservé et ses informations, la date de réservation et le prix total des réservations.
-Le statuts des chambres d'un hôtel permet de voir rapidement le prix et la disponibilité du wifi et de la chambre. 
+**Langages et Technologies Utilisés**
+*  **PHP (Programmation Orienté Objet**
+   * Sémantique PHP pour un code clair et maintenable.
+   * Suivi des conventions de la **W3C** pour une structure HTML propre et accessible.
+  
+**Points Importants**
+* Structuration du code.
+* Utilisation de **classes et objets** en PHP.
+* Bonne organisation du projet pour des applications web simples
+  
+**Objectifs Pédagogiques**
+* Appliquer les bases de PHP pour manipuler des données dynamiques.
+* Structurer un projet en respectant les bonnes pratiques de développement.
+* Travailler avec les concepts de programmation orientée objet pour organiser et gérer les fonctionnalités.
